@@ -15,15 +15,34 @@ public class Sort {
 
         // print counts
         System.out.println(6);
-        System.out.println(4);
+        System.out.println(bubbleSort(array));
         System.out.println(mergeSort(array));
     }
 
-    // silly sort
+    // return number of comparisons for silly sort
+    public static int sillySort(int[] a) {
+        return 0;
+    }
 
-
-    // bubble sort
-
+    // return number of comparisons for bubble sort
+    public static int bubbleSort(int[] a) {
+        // initialize count
+        int bubbleCount = 0;
+        boolean swapped = true;
+        while (swapped) {
+            swapped = false;
+            for (int i = 0; i < a.length - 1; i++) {
+                bubbleCount++;
+                if (a[i] > a[i + 1]) {
+                    int temp = a[i];
+                    a[i] = a[i + 1];
+                    a[i + 1] = temp;
+                    swapped = true;
+                }
+            }
+        }
+        return bubbleCount;
+    }
     // return number of comparisons for merge sort
     public static int mergeSort(int[] a) {
         // initialize count
