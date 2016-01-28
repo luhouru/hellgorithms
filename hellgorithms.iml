@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Sum" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Time" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ArraySum" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ps1_sorting" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
