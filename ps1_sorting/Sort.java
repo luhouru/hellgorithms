@@ -1,4 +1,6 @@
-import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Sort {
@@ -13,15 +15,110 @@ public class Sort {
             array[i] = in.nextInt();
         }
 
-        // print counts
-        System.out.println(6);
-        System.out.println(bubbleSort(array));
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        for (int i = 0; i < array.length; i++) {
+            arrayList.add(array[i]);
+        }
+
+        /*System.out.println(Arrays.toString(arrayList.toArray()));
+        System.exit(0);*/
+
+        // print counts for silly sort
+        if (n > 9) {
+            System.out.println(-1);
+        } else {
+            System.out.println(sillySort(arrayList));
+        }
+
+        // print counts for bubbly sort
+        if (n > 100000) {
+            System.out.println(-1);
+        } else {
+            System.out.println(bubbleSort(array));
+        }
+
+        // print counts for merge sort
         System.out.println(mergeSort(array));
     }
 
     // return number of comparisons for silly sort
-    public static int sillySort(int[] a) {
-        return 0;
+    /*public static int sillySort(int[] a) {
+        // initialize count
+        int sillyCount = 0;
+        if (a.length < 2) {
+            return 0;
+        } else {
+            for (int i = 0; i < a.length - 1; i++) {
+                sillyCount++;
+                int temp = a[0];
+                a[0] = a[i];
+                a[i] = temp;
+                int[] maybeSorted = a.clone();
+                Collections.rotate(Arrays.asList(a), -1);
+                for (int j = 0; j < maybeSorted.length - 2; j++) {
+                    sillyCount++;
+                    if (maybeSorted[j] > maybeSorted[j + 1]) {
+                        sillyCount++;
+                        break;
+                    } else {
+                        return sillyCount;
+                    }
+                }
+                int temp2 = a[0];
+                a[0] = a[i];
+                a[i] = temp2;
+            }
+            return sillyCount;
+        }
+    }*/
+    public static int sillySort(ArrayList<Integer> a) {
+        // initialize silly count
+        int sillyCount = 0;
+        if (a.size() < 2) {
+            return sillyCount;
+        } else {
+            /*ArrayList<Integer> maybeSorted = null;
+            for (int i = 0; i < a.size() - 1; i++) {
+                int temp = a.get(0);
+                a.set(0, a.get(i));
+                a.set(i, temp);
+                maybeSorted = a;
+                Collections.rotate(maybeSorted, -1);
+                System.out.println(Arrays.toString(maybeSorted.toArray()));
+                for (int j = 0; j < maybeSorted.size() - 2; j++) {
+                    if (maybeSorted.get(j) > maybeSorted.get(j + 1)) {
+                        break;
+                    } else {
+                        return maybeSorted;
+                    }
+                }
+                int temp2 = a.get(0);
+                a.set(0, a.get(i));
+                a.set(i, temp2);
+            }
+            return maybeSorted;*/
+            ArrayList<Integer> maybeSorted = null;
+            for (int i = 0; i < a.size() - 1; i++) {
+                sillyCount++;
+                int temp = a.get(0);
+                a.set(0, a.get(i));
+                a.set(i, temp);
+                maybeSorted = a;
+                Collections.rotate(maybeSorted, -1);
+                System.out.println(Arrays.toString(maybeSorted.toArray()));
+                for (int j = 0; j < maybeSorted.size() - 2; j++) {
+                    if (maybeSorted.get(j) > maybeSorted.get(j + 1)) {
+                        break;
+                    } else {
+                        return sillyCount;
+                    }
+                }
+                int temp2 = a.get(0);
+                a.set(0, a.get(i));
+                a.set(i, temp2);
+            }
+            return sillyCount;
+        }
     }
 
     // return number of comparisons for bubble sort
@@ -43,6 +140,7 @@ public class Sort {
         }
         return bubbleCount;
     }
+
     // return number of comparisons for merge sort
     public static int mergeSort(int[] a) {
         // initialize count
