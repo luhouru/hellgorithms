@@ -1,8 +1,8 @@
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Sort {
+public class Solutions {
 
     public static void main(String[] args) {
         // gathers the input values
@@ -46,29 +46,50 @@ public class Sort {
         // return 0 if n is less than 2
         if (a.size() < 2) {
             return sillyCount;
-        } else {
-            // initialize maybeSorted
-            ArrayList<Integer> maybeSorted;
-            for (int i = 0; i < a.size() - 1; i++) {
-                sillyCount++;
-                int temp = a.get(0);
-                a.set(0, a.get(i));
-                a.set(i, temp);
-                maybeSorted = a;
-                Collections.rotate(maybeSorted, -1);
-                for (int j = 0; j < maybeSorted.size() - 2; j++) {
-                    if (maybeSorted.get(j) > maybeSorted.get(j + 1)) {
-                        sillyCount++;
-                        break;
-                    } else {
-                        return sillyCount + sillySort(maybeSorted);
-                    }
-                }
-                int temp2 = a.get(0);
-                a.set(0, a.get(i));
-                a.set(i, temp2);
-            }
         }
+        /*
+        for (int i = 0; i < a.size() - 1; i++) {
+            //sillyCount++;
+            System.out.println("Before swap: " + Arrays.toString(a.toArray()));
+            Integer first = a.get(0); // save first
+            a.set(0, a.get(i)); // set first to a[i]
+            a.set(i, first); // set a[i] to first
+            //System.out.println(Arrays.toString(a.toArray));
+            System.out.println("After swap: " + Arrays.toString(a.toArray()));
+
+            // maybe sorted
+            ArrayList<Integer> temp = new ArrayList<Integer>();
+                // concat to end
+                //sillyCount++;
+                for (int b = 1; b < a.size(); b++) {
+                    System.out.println("adding to temp: " + a.get(b));
+                    temp.add(a.get(b));
+                }
+
+                System.out.println("Temp after swap: " + Arrays.toString(temp.toArray()));
+                sillyCount++;
+                sillyCount += sillySort(temp);
+
+
+
+            for (int j = 0; j < temp.size() - 2; j++) {
+                //sillyCount++;
+                if (temp.get(j) > temp.get(j + 1)) {
+                    sillyCount++;
+                    break;
+                }
+                //sillyCount++;
+                sillyCount += sillySort(temp);
+            }
+            // after second loop
+            sillyCount++;
+            System.out.println("After second loop: " + Arrays.toString(temp.toArray()));
+            Integer swapBack = a.get(0); // save first
+            a.set(0, a.get(i)); // set first to a[i]
+            a.set(i, swapBack); // set a[i] to first
+            System.out.println("After swap back: " + Arrays.toString(temp.toArray()));
+            //sillyCount += sillySort(temp);
+        }*/
         return sillyCount;
     }
 
