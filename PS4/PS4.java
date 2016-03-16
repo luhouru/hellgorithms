@@ -45,6 +45,7 @@ public class PS4 {
                 answers.add(0, sum);
                 continue;
             }
+            
             ArrayList<Integer> sums = new ArrayList<Integer>();
             for (int j = 0; j <= i; j++) { //
                 int firstNum = j; // 0 // 1 // 2
