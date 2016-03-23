@@ -26,7 +26,7 @@ public class PS5 {
                 master.add(one);
                 for (int j = 0; j < sec.length(); j++) {
                     split(sec);
-                }
+                } 
             }
         }
     }
